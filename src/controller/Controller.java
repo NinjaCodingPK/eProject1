@@ -1,5 +1,6 @@
 package controller;
 
+import model.Initializator;
 import model.TourList;
 import view.View;
 
