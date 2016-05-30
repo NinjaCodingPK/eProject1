@@ -10,7 +10,7 @@ public class Shopping extends TourType {
 
     }
 
-    public Shopping(String name, String shopType) {
+    public Shopping(String shopType) {
         super(Constants.SHOPPING);
         this.shopType = shopType;
     }

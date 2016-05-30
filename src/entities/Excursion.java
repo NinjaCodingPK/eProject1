@@ -12,7 +12,7 @@ public class Excursion extends TourType {
 
     }
 
-    public Excursion(String name, ArrayList<String> route) {
+    public Excursion(ArrayList<String> route) {
         super(Constants.EXCURSION);
         this.route = route;
     }

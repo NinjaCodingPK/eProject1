@@ -10,7 +10,7 @@ public class Rest extends TourType {
 
     }
 
-    public Rest(String name, int hotelStars) {
+    public Rest(int hotelStars) {
         super(Constants.REST);
         this.hotelStars = hotelStars;
     }

@@ -4,29 +4,29 @@ package entities;
  * Created by wookie on 5/28/16.
  */
 public class Treatment extends TourType {
-    private String desease;
+    private String disease;
 
     public Treatment() {
 
     }
 
-    public Treatment(String name, String desease) {
+    public Treatment(String disease) {
         super(Constants.TREATMENT);
-        this.desease = desease;
+        this.disease = disease;
     }
 
-    public String getDesease() {
-        return desease;
+    public String getDisease() {
+        return disease;
     }
 
-    public void setDesease(String desease) {
-        this.desease = desease;
+    public void setDisease(String disease) {
+        this.disease = disease;
     }
 
     @Override
     public String toString() {
         return "Treatment{" +
-                "desease='" + desease + '\'' +
+                "desease='" + disease + '\'' +
                 '}';
     }
 }
