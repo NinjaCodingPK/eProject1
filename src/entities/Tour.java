@@ -1,9 +1,10 @@
 package entities;
 
 /**
+ * Entity class which realize Tour.
  * Created by wookie on 5/28/16.
  */
-public  class Tour {
+public abstract class Tour {
     private int cost;
     private int duration;
     private String country;

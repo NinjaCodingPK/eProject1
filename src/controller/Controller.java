@@ -31,13 +31,16 @@ public class Controller {
         view.printMessage(View.SORTED_BY_DURATION);
         view.printList(tours.getTours());
 
-        view.printMessage(View.GET_BY_COST);
-        view.printList(tours.findByCost(200));
+        int i = 200;
+        view.printMessage(View.GET_BY_COST, Integer.toString(i));
+        view.printList(tours.findByCost(i));
 
-        view.printMessage(View.GET_BY_DURATION);
+        i = 5;
+        view.printMessage(View.GET_BY_DURATION, Integer.toString(i));
         view.printList(tours.findByDuration(5));
 
-        view.printMessage(View.GET_BY_TRANSPORT);
-        view.printList(tours.findByTransport("bus"));
+        String transport = "bus";
+        view.printMessage(View.GET_BY_TRANSPORT, transport);
+        view.printList(tours.findByTransport(transport));
     }
 }

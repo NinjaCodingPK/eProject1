@@ -10,16 +10,19 @@ import java.util.stream.Collectors;
  * Created by wookie on 5/29/16.
  */
 public class TourList {
-    private ArrayList<Tour> tours = new ArrayList<>();
+    private List<Tour> tours = new ArrayList<>();
 
     public TourList() {
 
     }
 
-    public TourList(ArrayList<Tour> tours) {
+    public TourList(List<Tour> tours) {
         this.tours = tours;
     }
 
+    /**
+     * Method sorts tours by cost.
+     */
     public void sortByCost() {
         Collections.sort(tours, new Comparator<Tour>() {
             @Override
@@ -35,6 +38,9 @@ public class TourList {
         });
     }
 
+    /**
+     * Method sorts tours by duration.
+     */
     public void sortByDuration() {
         Collections.sort(tours, new Comparator<Tour>() {
             @Override
@@ -50,33 +56,84 @@ public class TourList {
         });
     }
 
+    /**
+     * Method uses filter to find responded tours by Predicate.
+     * @param p Predicate<Tour>.
+     * @return list of tours, which responds a Predicate.
+     * */
+    private List<Tour> findByPredicate(Predicate<Tour> p) {
+        return tours.stream()
+                .filter(p)
+                .collect(Collectors.toList());
+    }
+
+    /**
+     * Method search lists, which responds specified cost value.
+     * @param cost int value.
+     * @return list of tours with specified cost.
+     */
     public List<Tour> findByCost(int cost) {
-        return tours.stream()
-                .filter(t -> t.getCost() == cost)
-                .collect(Collectors.toList());
+        return findByPredicate(getCostPredicate(cost));
     }
 
+    /**
+     * Method search lists, which responds specified duration value.
+     * @param duration int value.
+     * @return list of tours with specified duration.
+     */
     public List<Tour> findByDuration(int duration) {
-        return tours.stream()
-                .filter(t -> t.getDuration() == duration)
-                .collect(Collectors.toList());
+        return findByPredicate(getDurationPredicate(duration));
     }
 
+    /**
+     * Method search lists, which responds specified transport value.
+     * @param transport String value.
+     * @return list of tours with specified transport.
+     */
     public List<Tour> findByTransport(String transport) {
-        return tours.stream()
-                .filter(t -> t.getTransport().equals(transport))
-                .collect(Collectors.toList());
+        return findByPredicate(getTransportPredicate(transport));
     }
 
+    /**
+     * Method returns cost predicate.
+     * @param cost int value.
+     * @return cost predicate.
+     */
+    private Predicate<Tour> getCostPredicate(int cost) {
+        return t -> t.getCost() == cost;
+    }
+
+    /**
+     * Method returns duration predicate.
+     * @param duration int value.
+     * @return duration predicate.
+     */
+    private Predicate<Tour> getDurationPredicate(int duration) {
+        return t -> t.getDuration() == duration;
+    }
+
+    /**
+     * Method returns transport predicate.
+     * @param transport String value.
+     * @return transport predicate.
+     */
+    private Predicate<Tour> getTransportPredicate(String transport) {
+        return t -> t.getTransport().equals(transport);
+    }
+
+    /**
+     * Method adds tour into list of tours.
+     * @param tour entities.Tour.
+     */
     public void addTour(Tour tour) {
         tours.add(tour);
     }
 
-    public ArrayList<Tour> getTours() {
+    public List<Tour> getTours() {
         return tours;
     }
 
-    public void setTours(ArrayList<Tour> tours) {
+    public void setTours(List<Tour> tours) {
         this.tours = tours;
     }
 }
